@@ -7,7 +7,7 @@ RUN ldconfig
 
 COPY joke.scala .
 RUN scala-cli compile joke.scala
-RUN scala-cli --power package joke.scala
+RUN scala-cli --power package --native-mode release-fast --native-lto thin joke.scala
 
 FROM gcr.io/distroless/cc
 
