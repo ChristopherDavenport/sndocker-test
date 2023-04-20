@@ -9,8 +9,6 @@ COPY joke.scala .
 RUN scala-cli compile joke.scala
 RUN scala-cli --power package joke.scala
 
-RUN ls
-
 FROM ubuntu:22.04
 
 COPY --from=0 ./Joke .
