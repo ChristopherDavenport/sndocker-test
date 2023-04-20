@@ -11,6 +11,6 @@ RUN /home/linuxbrew/.linuxbrew/bin/brew install s2n
 
 COPY sndocker-test-out .
 
-# ENV LD_LIBRARY_PATH "/home/linuxbrew/.linuxbrew/Cellar/openssl@3/3.1.0/lib:/home/linuxbrew/.linuxbrew/Cellar/s2n/1.3.42/lib"
+ENV LD_LIBRARY_PATH "/home/linuxbrew/.linuxbrew/Cellar/openssl@3/3.1.0/lib:/home/linuxbrew/.linuxbrew/Cellar/s2n/1.3.42/lib"
 
 CMD ./sndocker-test-out

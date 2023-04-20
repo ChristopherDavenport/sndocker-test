@@ -1,4 +1,4 @@
-// import com.armanbilge.scalanative.brew.BrewNativeConfig
+import com.armanbilge.scalanative.brew.BrewNativeConfig
 import com.indoorvivants.detective.Platform.OS.*
 import com.indoorvivants.detective.Platform
 import bindgen.interface.Binding
@@ -39,12 +39,12 @@ val munitCatsEffectV = "2.0.0-M3"
 
 // Projects
 lazy val `sndocker-test` = tlCrossRootProject
-  .aggregate(core)
+  .aggregate(vcpkg)
 
-lazy val core = crossProject(JVMPlatform, NativePlatform)
+lazy val vcpkg = crossProject(JVMPlatform, NativePlatform)
   .crossType(CrossType.Pure)
   .enablePlugins(BindgenPlugin, VcpkgPlugin, NoPublishPlugin)
-  .in(file("core"))
+  .in(file("sn/vcpkg"))
   .settings(
     name := "sndocker-test",
     libraryDependencies ++= Seq(
@@ -91,5 +91,30 @@ lazy val core = crossProject(JVMPlatform, NativePlatform)
           conf.compileOptions ++ arch64
         )
     },
+  )
+
+lazy val brew = crossProject(JVMPlatform, NativePlatform)
+  .crossType(CrossType.Pure)
+  .enablePlugins(ScalaNativeBrewedConfigPlugin)
+  .in(file("sn/brew"))
+  .settings(
+    name := "sndocker-test",
+    nativeBrewFormulas += "s2n",
+    libraryDependencies ++= Seq(
+      "org.typelevel"               %%% "cats-core"                  % catsV,
+      "org.typelevel"               %%% "cats-effect"                % catsEffectV,
+
+      "co.fs2"                      %%% "fs2-core"                   % fs2V,
+      "co.fs2"                      %%% "fs2-io"                     % fs2V,
+
+      "org.http4s"                  %%% "http4s-dsl"                 % http4sV,
+      "org.http4s"                  %%% "http4s-ember-server"        % http4sV,
+      "org.http4s"                  %%% "http4s-ember-client"        % http4sV,
+      "org.http4s"                  %%% "http4s-circe"               % http4sV,
+
+      "io.chrisdavenport"           %%% "crossplatformioapp"         % "0.1.0",
+
+      "org.typelevel"               %%% "munit-cats-effect"        % munitCatsEffectV         % Test,
+    )
   )
 
