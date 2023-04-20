@@ -9,10 +9,10 @@ COPY joke.scala .
 RUN scala-cli compile joke.scala
 RUN scala-cli --power package joke.scala
 
-FROM ubuntu:22.04
+FROM gcr.io/distroless/cc
 
-COPY --from=0 ./Joke .
+COPY --from=0 ./Joke /
 
 ENV S2N_DONT_MLOCK=1
 
-CMD ./Joke
+CMD ["/Joke"]
