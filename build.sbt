@@ -26,7 +26,7 @@ ThisBuild / scalaVersion := Scala3
 ThisBuild / testFrameworks += new TestFramework("munit.Framework")
 
 ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("17"))
-ThisBuild / tlJdkRelease := Some(8)
+ThisBuild / tlJdkRelease := Some(11)
 
 
 val catsV = "2.9.0"
