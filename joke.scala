@@ -1,5 +1,4 @@
 //> using platform "native"
-//> using nativeLinking "/usr/lib/x86_64-linux-gnu/libcrypto.a"
 //> using lib "org.http4s::http4s-ember-client::0.23.19-RC3"
 //> using lib "org.http4s::http4s-circe::0.23.19-RC3"
 //> using lib "com.armanbilge::epollcat::0.1.4"
