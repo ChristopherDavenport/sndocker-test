@@ -95,7 +95,7 @@ lazy val vcpkg = crossProject(JVMPlatform, NativePlatform)
 
 lazy val brew = crossProject(JVMPlatform, NativePlatform)
   .crossType(CrossType.Pure)
-  .enablePlugins(ScalaNativeBrewedConfigPlugin)
+  .enablePlugins(ScalaNativeBrewedConfigPlugin, NoPublishPlugin)
   .in(file("sn/brew"))
   .settings(
     name := "sndocker-test",
