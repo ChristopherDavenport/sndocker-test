@@ -91,7 +91,7 @@ lazy val vcpkg = crossProject(JVMPlatform, NativePlatform)
           conf.compileOptions ++ arch64
         )
     },
-  )
+  ).nativeConfigure(_.enablePlugins(VcpkgNativePlugin))
 
 lazy val brew = crossProject(JVMPlatform, NativePlatform)
   .crossType(CrossType.Pure)
